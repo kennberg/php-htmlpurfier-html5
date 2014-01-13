@@ -24,7 +24,7 @@ function load_htmlpurifier($allowed) {
   $config = HTMLPurifier_Config::createDefault();
   $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
   $config->set('CSS.AllowTricky', true);
-  $config->set('Cache.SerializerPath', '/tmp/shopstarter');
+  $config->set('Cache.SerializerPath', '/tmp');
 
   // Allow iframes from:
   // o YouTube.com
