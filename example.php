@@ -1,8 +1,8 @@
 <?php
 
-require_once('htmlpurifier_html5.php');
+define('LIB_DIR', getcwd() . '/lib/');
 
-define('LIB_DIR', getcwd() . 'lib/');
+require_once('htmlpurifier_html5.php');
 
 // EDIT: modify this to whatever you need.
 $allowed = array(
@@ -22,4 +22,19 @@ $allowed = array(
 );
 
 $purifier = load_htmlpurifier($allowed);
+
+$content = <<<EOT
+<h1>HTMLPurifier HTML5 Demo</h1>
+<p>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/5SS77cgAjNw" frameborder="0" allowfullscreen></iframe>
+</p>
+<p>
+<video controls preload="none" poster="//www.videojs.com/img/poster.jpg">
+  <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+  <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+</video>
+</p>
+EOT;
+
+echo $purifier->purify($content);
 

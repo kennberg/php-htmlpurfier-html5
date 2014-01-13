@@ -30,7 +30,7 @@ function load_htmlpurifier($allowed) {
   // o YouTube.com
   // o Vimeo.com
   $config->set('HTML.SafeIframe', true);
-  $config->set('URI.SafeIframeRegexp', '%^http://(www.youtube(?:-nocookie)?.com/embed/|player.vimeo.com/video/)%');
+  $config->set('URI.SafeIframeRegexp', '%^(http:|https:)?//(www.youtube(?:-nocookie)?.com/embed/|player.vimeo.com/video/)%');
 
   $config->set('HTML.Allowed', implode(',', $allowed));
 
@@ -62,7 +62,7 @@ function load_htmlpurifier($allowed) {
       'width' => 'Length',
       'height' => 'Length',
       'poster' => 'URI',
-      'preload' => 'Bool',
+      'preload' => 'Enum#auto,metadata,none',
       'controls' => 'Bool',
     ));
     $def->addElement('source', 'Block', 'Flow', 'Common', array(
